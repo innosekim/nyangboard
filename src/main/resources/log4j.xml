@@ -11,7 +11,7 @@
     </appender>
 
     <!-- Application Loggers -->
-    <logger name="com.doubles.ex00">
+    <logger name="com.nyang.mvcboard">
         <level value="info"/>
     </logger>
 
