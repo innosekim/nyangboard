@@ -1,5 +1,6 @@
 package com.nyang.mvcboard.service;
 
+import com.nyang.mvcboard.commons.paging.Criteria;
 import com.nyang.mvcboard.domain.ArticleVO;
 import com.nyang.mvcboard.persistence.ArticleDAO;
 import org.springframework.stereotype.Service;
@@ -41,4 +42,15 @@ public class ArticleServiceImpl implements ArticleService {
     public List<ArticleVO> listAll() throws Exception {
         return articleDAO.listAll();
     }
+
+    @Override
+    public List<ArticleVO> listCriteria(Criteria criteria) throws Exception {
+        return articleDAO.listCriteria(criteria);
+    }
+
+    @Override
+    public int countArticles(Criteria criteria) throws Exception {
+        return articleDAO.countArticles(criteria);
+    }
+
 }

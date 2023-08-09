@@ -1,5 +1,6 @@
 package com.nyang.mvcboard;
 
+import com.nyang.mvcboard.commons.paging.Criteria;
 import com.nyang.mvcboard.domain.ArticleVO;
 import com.nyang.mvcboard.persistence.ArticleDAO;
 import org.junit.Test;
@@ -8,8 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.inject.Inject;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/applicationContext.xml"})
@@ -30,6 +34,20 @@ public class ArticleDAOTest {
     }
 
     @Test
+    public void testCreateMulti() throws Exception {
+
+        for (int i = 1; i <= 1000; i++) {
+            ArticleVO articleVO = new ArticleVO();
+            articleVO.setTitle(i+ "번째 글 제목입니다...");
+            articleVO.setContent(i+ "번재 글 내용입니다...");
+            articleVO.setWriter("user0"+(i%10));
+
+            articleDAO.create(articleVO);
+        }
+
+    }
+
+    @Test
     public void testRead() throws Exception {
         logger.info(articleDAO.read(1).toString());
     }
@@ -47,4 +65,62 @@ public class ArticleDAOTest {
     public void testDelete() throws Exception {
         articleDAO.delete(1);
     }
+
+    @Test
+    public void testListPaging() throws Exception {
+
+        int page = 2;
+
+        List<ArticleVO> articles = articleDAO.listPaging(page);
+
+        for (ArticleVO article : articles) {
+            logger.info(article.getArticleNo() + ":" + article.getTitle());
+        }
+
+    }
+
+    @Test
+    public void testListCriteria() throws Exception {
+        Criteria criteria = new Criteria();
+        criteria.setPage(3);
+        criteria.setPerPageNum(20);
+
+        List<ArticleVO> articles = articleDAO.listCriteria(criteria);
+
+        for (ArticleVO article : articles) {
+            logger.info(article.getArticleNo() + " : " + article.getTitle());
+        }
+    }
+
+    @Test
+    public void testURI() throws Exception {
+
+        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+                .path("/article/read")
+                .queryParam("articleNo", 12)
+                .queryParam("perPageNum", 20)
+                .build();
+
+        logger.info("/article/read?articleNo=12&perPageNum=20");
+        logger.info(uriComponents.toString());
+
+    }
+
+    @Test
+    public void testURI2() throws Exception {
+
+        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+                .path("/{module}/{page}")
+                .queryParam("articleNo", 12)
+                .queryParam("perPageNum", 20)
+                .build()
+                .expand("article", "read")
+                .encode();
+
+        logger.info("/article/read?articleNo=12&perPageNum=20");
+        logger.info(uriComponents.toString());
+
+    }
+
+
 }

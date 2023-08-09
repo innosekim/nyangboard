@@ -10,6 +10,19 @@
         </layout>
     </appender>
 
+    <!-- jdbc Loggers 추가함 -->
+<!--    <logger name="jdbc.audit">
+        <level value="info" />
+    </logger>-->
+
+<!--    <logger name="jdbc.resultset">
+        <level value="info" />
+    </logger>-->
+
+    <logger name="jdbc.resultsettable">
+        <level value="info" />
+    </logger>
+
     <!-- Application Loggers -->
     <logger name="com.nyang.mvcboard">
         <level value="info"/>
