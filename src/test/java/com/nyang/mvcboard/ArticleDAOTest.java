@@ -1,6 +1,7 @@
 package com.nyang.mvcboard;
 
 import com.nyang.mvcboard.commons.paging.Criteria;
+import com.nyang.mvcboard.commons.paging.SearchCriteria;
 import com.nyang.mvcboard.domain.ArticleVO;
 import com.nyang.mvcboard.persistence.ArticleDAO;
 import org.junit.Test;
@@ -120,6 +121,27 @@ public class ArticleDAOTest {
         logger.info("/article/read?articleNo=12&perPageNum=20");
         logger.info(uriComponents.toString());
 
+    }
+
+    @Test
+    public void testDynamic1() throws Exception {
+
+        SearchCriteria searchCriteria = new SearchCriteria();
+        searchCriteria.setPage(1);
+        searchCriteria.setKeyword("999");
+        searchCriteria.setSearchType("t");
+
+        logger.info("======================");
+
+        List<ArticleVO> articles = articleDAO.listSearch(searchCriteria);
+
+        for (ArticleVO article : articles) {
+            logger.info(article.getArticleNo() + " : " + article.getTitle());
+        }
+
+        logger.info("======================");
+
+        logger.info("searched articles count : " + articleDAO.countSearchedArticles(searchCriteria));
     }
 
 

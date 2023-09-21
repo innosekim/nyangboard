@@ -1,6 +1,7 @@
 package com.nyang.mvcboard.persistence;
 
 import com.nyang.mvcboard.commons.paging.Criteria;
+import com.nyang.mvcboard.commons.paging.SearchCriteria;
 import com.nyang.mvcboard.domain.ArticleVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -65,6 +66,15 @@ public class ArticleDAOImpl implements ArticleDAO{
         return sqlSession.selectOne(NAMESPACE + ".countArticles", criteria);
     }
 
+    @Override
+    public List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".listSearch", searchCriteria);
+    }
+
+    @Override
+    public int countSearchedArticles(SearchCriteria searchCriteria) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".countSearchedArticles", searchCriteria);
+    }
 
 
 }
