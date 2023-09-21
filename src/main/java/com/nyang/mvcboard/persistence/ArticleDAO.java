@@ -1,6 +1,7 @@
 package com.nyang.mvcboard.persistence;
 
 import com.nyang.mvcboard.commons.paging.Criteria;
+import com.nyang.mvcboard.commons.paging.SearchCriteria;
 import com.nyang.mvcboard.domain.ArticleVO;
 
 import java.util.List;
@@ -21,4 +22,9 @@ public interface ArticleDAO {
     List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
 
     int countArticles(Criteria criteria) throws Exception;
+
+    List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception;
+
+    int countSearchedArticles(SearchCriteria searchCriteria) throws Exception;
+    
 }
