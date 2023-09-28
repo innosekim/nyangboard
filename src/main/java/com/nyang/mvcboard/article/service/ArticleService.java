@@ -1,12 +1,13 @@
-package com.nyang.mvcboard.persistence;
+package com.nyang.mvcboard.article.service;
 
+import com.nyang.mvcboard.article.domain.ArticleVO;
 import com.nyang.mvcboard.commons.paging.Criteria;
 import com.nyang.mvcboard.commons.paging.SearchCriteria;
-import com.nyang.mvcboard.domain.ArticleVO;
 
 import java.util.List;
 
-public interface ArticleDAO {
+public interface ArticleService {
+
     void create(ArticleVO articleVO) throws Exception;
 
     ArticleVO read(Integer articleNo) throws Exception;
@@ -17,8 +18,6 @@ public interface ArticleDAO {
 
     List<ArticleVO> listAll() throws Exception;
 
-    List<ArticleVO> listPaging(int page) throws Exception;
-
     List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
 
     int countArticles(Criteria criteria) throws Exception;
@@ -26,5 +25,4 @@ public interface ArticleDAO {
     List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception;
 
     int countSearchedArticles(SearchCriteria searchCriteria) throws Exception;
-    
 }

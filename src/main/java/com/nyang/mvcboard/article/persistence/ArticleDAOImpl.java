@@ -1,8 +1,8 @@
-package com.nyang.mvcboard.persistence;
+package com.nyang.mvcboard.article.persistence;
 
+import com.nyang.mvcboard.article.domain.ArticleVO;
 import com.nyang.mvcboard.commons.paging.Criteria;
 import com.nyang.mvcboard.commons.paging.SearchCriteria;
-import com.nyang.mvcboard.domain.ArticleVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 

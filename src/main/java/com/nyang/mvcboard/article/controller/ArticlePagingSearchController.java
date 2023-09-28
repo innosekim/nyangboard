@@ -1,9 +1,9 @@
-package com.nyang.mvcboard.controller;
+package com.nyang.mvcboard.article.controller;
 
+import com.nyang.mvcboard.article.domain.ArticleVO;
 import com.nyang.mvcboard.commons.paging.PageMaker;
 import com.nyang.mvcboard.commons.paging.SearchCriteria;
-import com.nyang.mvcboard.domain.ArticleVO;
-import com.nyang.mvcboard.service.ArticleService;
+import com.nyang.mvcboard.article.service.ArticleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

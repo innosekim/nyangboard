@@ -2,8 +2,8 @@ package com.nyang.mvcboard;
 
 import com.nyang.mvcboard.commons.paging.Criteria;
 import com.nyang.mvcboard.commons.paging.SearchCriteria;
-import com.nyang.mvcboard.domain.ArticleVO;
-import com.nyang.mvcboard.persistence.ArticleDAO;
+import com.nyang.mvcboard.article.domain.ArticleVO;
+import com.nyang.mvcboard.article.persistence.ArticleDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -17,7 +17,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/applicationContext.xml"})
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring-config/applicationContext.xml"})
 public class ArticleDAOTest {
 
     private static final Logger logger = LoggerFactory.getLogger(ArticleDAOTest.class);
@@ -50,7 +50,8 @@ public class ArticleDAOTest {
 
     @Test
     public void testRead() throws Exception {
-        logger.info(articleDAO.read(1).toString());
+//        logger.info(articleDAO.read(1).toString());
+        logger.info(articleDAO.read(100).toString());
     }
 
     @Test

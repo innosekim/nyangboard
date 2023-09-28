@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public class ReplyDAOImpl implements ReplyDAO{
-    private static String NAMESPACE = "com.nyang.mvcboard.mappers.reply.ReplyMapper";
+    private static String NAMESPACE = "com.nyang.mvcboard.mappers.reply.replyMapper";
 
 
     private final SqlSession sqlSession;

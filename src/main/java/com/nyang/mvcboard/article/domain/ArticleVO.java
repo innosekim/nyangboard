@@ -1,4 +1,4 @@
-package com.nyang.mvcboard.domain;
+package com.nyang.mvcboard.article.domain;
 
 import java.util.Date;
 

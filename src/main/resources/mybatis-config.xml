@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.nyang.mvcboard.domain.ArticleVO" alias="ArticleVO"/>
+        <typeAlias type="com.nyang.mvcboard.article.domain.ArticleVO" alias="ArticleVO"/>
+        <typeAlias type="com.nyang.mvcboard.reply.domain.ReplyVO" alias="ReplyVO"/>
     </typeAliases>
 </configuration>

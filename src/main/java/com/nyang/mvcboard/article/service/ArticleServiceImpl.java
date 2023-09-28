@@ -1,9 +1,9 @@
-package com.nyang.mvcboard.service;
+package com.nyang.mvcboard.article.service;
 
+import com.nyang.mvcboard.article.domain.ArticleVO;
 import com.nyang.mvcboard.commons.paging.Criteria;
 import com.nyang.mvcboard.commons.paging.SearchCriteria;
-import com.nyang.mvcboard.domain.ArticleVO;
-import com.nyang.mvcboard.persistence.ArticleDAO;
+import com.nyang.mvcboard.article.persistence.ArticleDAO;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
