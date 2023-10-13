@@ -1,0 +1,35 @@
+
+### 댓글 등록
+POST http://localhost:80/replies
+Content-Type: application/json
+
+{
+  "articleNo": 1001,
+  "replyText": "컨트롤러에서 request날려서",
+  "replyWriter": "request사용자"
+}
+
+
+
+### 목록 불러오기 (마지막 게시글번호 파라미터)
+GET http://localhost:80/replies/all/1001
+Accept: application/json
+
+
+### 수정테스트
+PUT http://localhost:80/replies/101
+Content-Type: application/json
+
+{
+ "replyText" : "101번 댓글 수정 테스트"
+}
+
+### 삭제 테스트
+DELETE http://localhost:80/replies/101
+Content-Type: application/x-www-form-urlencoded
+
+
+
+### 목록 불러오기 (페이징)
+GET http://localhost:80/replies/1001/2
+Accept: application/json
