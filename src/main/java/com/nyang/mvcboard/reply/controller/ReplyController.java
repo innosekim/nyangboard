@@ -99,7 +99,7 @@ public class ReplyController {
 
             Map<String, Object> map = new HashMap<>();
             map.put("replies", replies);
-            map.put("pageMake", pageMaker);
+            map.put("pageMaker", pageMaker);
 
             entity = new ResponseEntity<>(map, HttpStatus.OK);
 
@@ -112,8 +112,6 @@ public class ReplyController {
 
         return entity;
     }
-
-    
 
 
 }

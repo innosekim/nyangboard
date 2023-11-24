@@ -35,7 +35,7 @@ public class ArticleController {
 
         logger.info("write GET...");
 
-        return "/article/write";
+        return "/article/basic/write";
     }
     // 등록 처리
     @RequestMapping(value = "/write", method = RequestMethod.POST)
@@ -47,7 +47,7 @@ public class ArticleController {
         articleService.create(articleVO);
         redirectAttributes.addFlashAttribute("msg", "regSuccess");
 
-        return "redirect:/article/list";
+        return "redirect:/article/basic/list";
     }
     // 목록 페이지 이동
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -56,7 +56,7 @@ public class ArticleController {
         logger.debug("list ...");
         model.addAttribute("articles", articleService.listAll());
 
-        return "/article/list";
+        return "/article/basic/list";
     }
     // 조회 페이지 이동
     @RequestMapping(value = "/read", method = RequestMethod.GET)
@@ -66,7 +66,7 @@ public class ArticleController {
         logger.info("read ...");
         model.addAttribute("article", articleService.read(articleNo));
 
-        return "/article/read";
+        return "/article/basic/read";
     }
     // 수정 페이지 이동
     @RequestMapping(value = "/modify", method = RequestMethod.GET)
@@ -76,7 +76,7 @@ public class ArticleController {
         logger.info("modifyGet ...");
         model.addAttribute("article", articleService.read(articleNo));
 
-        return "/article/modify";
+        return "/article/basic/modify";
     }
     // 수정 처리
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
@@ -87,7 +87,7 @@ public class ArticleController {
         articleService.update(articleVO);
         redirectAttributes.addFlashAttribute("msg", "modSuccess");
 
-        return "redirect:/article/list";
+        return "redirect:/article/basic/list";
     }
     // 삭제 처리
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
@@ -98,14 +98,14 @@ public class ArticleController {
         articleService.delete(articleNo);
         redirectAttributes.addFlashAttribute("msg", "delSuccess");
 
-        return "redirect:/article/list";
+        return "redirect:/article/basic/list";
     }
     // 페이징 목록 요청을 처리
     @RequestMapping(value = "/listCriteria", method = RequestMethod.GET)
     public String listCriteria(Model model, Criteria criteria) throws Exception {
         logger.info("listCriteria ...");
         model.addAttribute("articles", articleService.listCriteria(criteria));
-        return "/article/listCriteria";
+        return "/article/basic/listCriteria";
     }
 
     @RequestMapping(value = "/listPaging", method = RequestMethod.GET)
@@ -120,7 +120,7 @@ public class ArticleController {
         model.addAttribute("articles", articleService.listCriteria(criteria));
         model.addAttribute("pageMaker", pageMaker);
 
-        return "/article/list_paging";
+        return "/article/basic/list_paging";
     }
 
 
@@ -135,7 +135,7 @@ public class ArticleController {
 
         model.addAttribute("article", articleService.read(articleNo));
 
-        return "/article/read_paging";
+        return "/article/basic/read_paging";
     }
     @RequestMapping(value = "/modifyPaging", method = RequestMethod.GET)
     public String modifyGETPaging(@RequestParam("articleNo") int articleNo,
@@ -145,7 +145,7 @@ public class ArticleController {
         logger.info("modifyGetPaging ...");
         model.addAttribute("article", articleService.read(articleNo));
 
-        return "/article/modify_paging";
+        return "/article/basic/modify_paging";
     }
     @RequestMapping(value = "/modifyPaging", method = RequestMethod.POST)
     public String modifyPOSTPaging(ArticleVO articleVO,
@@ -158,7 +158,7 @@ public class ArticleController {
         redirectAttributes.addAttribute("perPageNum", criteria.getPerPageNum());
         redirectAttributes.addFlashAttribute("msg", "modSuccess");
 
-        return "redirect:/article/listPaging";
+        return "redirect:/article/basic/listPaging";
     }
     @RequestMapping(value = "/removePaging", method = RequestMethod.POST)
     public String removePaging(@RequestParam("articleNo") int articleNo,
@@ -171,7 +171,7 @@ public class ArticleController {
         redirectAttributes.addAttribute("perPageNum", criteria.getPerPageNum());
         redirectAttributes.addFlashAttribute("msg", "delSuccess");
 
-        return "redirect:/article/listPaging";
+        return "redirect:/article/basic/listPaging";
     }
 
 }

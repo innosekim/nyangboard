@@ -28,6 +28,27 @@ public class ArticlePagingSearchController {
         this.articleService = articleService;
     }
 
+    @RequestMapping(value = "/write", method = RequestMethod.GET)
+    public String writeGET() {
+
+        logger.info("paging writeGET() called...");
+
+        return "article/search/write";
+    }
+
+    @RequestMapping(value = "/write", method = RequestMethod.POST)
+    public String writePOST(ArticleVO articleVO,
+                            RedirectAttributes redirectAttributes) throws Exception {
+
+        logger.info("paging writePOST() called...");
+
+        articleService.create(articleVO);
+        redirectAttributes.addFlashAttribute("msg", "regSuccess");
+
+        return "redirect:/article/paging/search/list";
+    }
+
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(@ModelAttribute("searchCriteria") SearchCriteria searchCriteria,
                        Model model) throws Exception {
@@ -53,7 +74,16 @@ public class ArticlePagingSearchController {
                        Model model) throws Exception {
 
         logger.info("search read() called ...");
-        model.addAttribute("article", articleService.read(articleNo));
+        ArticleVO article = articleService.read(articleNo);
+
+        // 게시글 내용에서 줄바꿈 처리
+        String formattedContent = article.getContent().replace("\n", "<br>");
+        article.setContent(formattedContent);
+
+
+        model.addAttribute("article", article);
+
+
 
         return "article/search/read";
     }

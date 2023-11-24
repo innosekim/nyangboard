@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public class ArticleDAOImpl implements ArticleDAO{
-    private static final String NAMESPACE = "com.nyang.mvcboard.mappers.articleMapper";
+    private static final String NAMESPACE = "com.nyang.mvcboard.mappers.article.articleMapper";
 
     private final SqlSession sqlSession;
 
